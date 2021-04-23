@@ -8,8 +8,7 @@ const bot = mineflayer.createBot({
     host: 'mc.pvp-warcraft.net',
     port: '25565',
     //username: '4FK',
-    username: 'eziosala32@gmail.com',
-    password: 'eziosala47390',
+    username: 'R3b1rth',
 })
 
 //salons discord
