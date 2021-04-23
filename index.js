@@ -15,9 +15,8 @@ const bot = mineflayer.createBot({
 let channeler;
 client.on('ready', async() => {
     channeler = await client.channels.cache.get("835254128334077952")
-    channeler.send('test')
-    if(bot) channeler.send('test1')
     console.log(`The discord bot logged in! Username: ${client.user.username}!`)
+    if(channeler) console.log("channel trouvé")
 })
 
 //Discord -> Minecraft
@@ -25,14 +24,15 @@ client.on('message', message => {
     if (message.author.id === client.user.id) return;
     if (message.channel.id !== channeler.id) return;
     if (message.content.startsWith("!")) return;
+    if (!message.content) return;
     bot.chat(message.content)
 })
 
 //Minecraft -> Discord
 bot.on('message', async(message) => {
-    channeler.send('1')
     let msg = message.toString()
     if (!msg) return;
+    console.log(msg)
     if (channeler) {
         if (msg === "[»] Tu as été déconnecté du serveur, vous avez donc été automatiquement redirigé vers le serveur principal! La raison de la déconnexion est '» Redémarrage du serveur.'!") {
             channeler.send(msg).catch((err) => console.log(err))
@@ -47,9 +47,9 @@ bot.on('message', async(message) => {
 
 //Connection
 bot.once('spawn', () => {
-    channeler.send('login')
+    console.log('Je rejoins..')
     bot.chat(`/login eziosala`)
-    channeler.send('connection..')
+    console.log('connection..')
     setTimeout(function() {
         bot.setQuickBarSlot(4)
         bot.activateItem()
@@ -63,9 +63,9 @@ function login() {
 }
 
 bot.on('windowOpen', (window) => {
-    channeler.send('inventaire ouvert')
+    console.log('inventaire ouvert')
     bot.clickWindow(16, 0, 0)
-    channeler.send('connecté')
+    console.log("connecté, début de l'afk")
 })
 
 //Catch
