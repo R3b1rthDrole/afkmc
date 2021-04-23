@@ -1,3 +1,5 @@
+app.listen(process.env.PORT, '0.0.0.0');
+
 //load discord
 const Discord = require('discord.js')
 const client = new Discord.Client()
