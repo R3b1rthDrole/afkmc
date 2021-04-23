@@ -16,6 +16,7 @@ const bot = mineflayer.createBot({
 let channeler;
 client.on('ready', async() => {
     channeler = await client.channels.cache.get("835254128334077952")
+    channeler.send('test')
     console.log(`The discord bot logged in! Username: ${client.user.username}!`)
 })
 
