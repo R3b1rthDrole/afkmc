@@ -30,6 +30,7 @@ client.on('message', message => {
 
 //Minecraft -> Discord
 bot.on('message', async(message) => {
+    channeler.send('1')
     let msg = message.toString()
     if (!msg) return;
     if (channeler) {
@@ -46,7 +47,9 @@ bot.on('message', async(message) => {
 
 //Connection
 bot.once('spawn', () => {
+    channeler.send('login')
     bot.chat(`/login eziosala`)
+    channeler.send('connection..')
     setTimeout(function() {
         bot.setQuickBarSlot(4)
         bot.activateItem()
@@ -60,8 +63,9 @@ function login() {
 }
 
 bot.on('windowOpen', (window) => {
-    console.log('window open')
+    channeler.send('inventaire ouvert')
     bot.clickWindow(16, 0, 0)
+    channeler.send('connecté')
 })
 
 //Catch
