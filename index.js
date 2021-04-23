@@ -68,4 +68,4 @@ bot.on('kicked', (reason, loggedIn) => console.log(reason, loggedIn));
 bot.on('error', err => console.log(err))
 
 //Connection discord
-client.login("ODA3MDI4MDIyNDcyNzM2Nzg4.YByBag.uzrUcTpI2EENf91g--7uQrG1Tis")
+client.login(process.env.TOKEN)
