@@ -17,6 +17,7 @@ let channeler;
 client.on('ready', async() => {
     channeler = await client.channels.cache.get("835254128334077952")
     channeler.send('test')
+    if(bot) channeler.send('test1')
     console.log(`The discord bot logged in! Username: ${client.user.username}!`)
 })
 
