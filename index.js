@@ -59,13 +59,13 @@ bot.once('spawn', () => {
     console.log('connection..')
     setTimeout(function(){
       login()
-      console.log("connecté, début de l'afk")
     }, 2500)
 })
 
 //Boussole + inventaire
 function login() {
   bot.chat("/skycheat")
+  console.log("connecté, début de l'afk")
 }
 
 bot.on('windowOpen', (window) => {
