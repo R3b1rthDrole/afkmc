@@ -1,3 +1,7 @@
+const express = require('express')
+const app = express()
+const port = 3000
+
 //load discord
 const Discord = require('discord.js')
 const client = new Discord.Client()
