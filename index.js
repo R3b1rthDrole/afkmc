@@ -62,7 +62,8 @@ bot.once('spawn', () => {
 
 //Boussole + inventaire
 function login() {
-    bot.chat("/skycheat")
+  bot.chat("/skycheat")
+  console.log("connecté, début de l'afk")
 }
 
 bot.on('windowOpen', (window) => {
