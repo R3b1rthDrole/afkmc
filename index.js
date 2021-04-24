@@ -57,13 +57,14 @@ bot.once('spawn', () => {
     console.log('Je rejoins..')
     bot.chat(`/login eziosala`)
     console.log('connection..')
-    login()
+    timeout(login {
+      console.log("connecté, début de l'afk")
+    }, 2500)
 })
 
 //Boussole + inventaire
 function login() {
   bot.chat("/skycheat")
-  console.log("connecté, début de l'afk")
 }
 
 bot.on('windowOpen', (window) => {
