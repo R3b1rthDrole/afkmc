@@ -57,16 +57,12 @@ bot.once('spawn', () => {
     console.log('Je rejoins..')
     bot.chat(`/login eziosala`)
     console.log('connection..')
-    setTimeout(function() {
-        bot.setQuickBarSlot(4)
-        bot.activateItem()
-    }, 2500);
+    login()
 })
 
 //Boussole + inventaire
 function login() {
-    bot.setQuickBarSlot(4)
-    bot.activateItem()
+    bot.chat("/skycheat")
 }
 
 bot.on('windowOpen', (window) => {
