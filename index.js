@@ -57,7 +57,8 @@ bot.once('spawn', () => {
     console.log('Je rejoins..')
     bot.chat(`/login eziosala`)
     console.log('connection..')
-    setTimeout(login(){
+    setTimeout(function(){
+      login()
       console.log("connecté, début de l'afk")
     }, 2500)
 })
