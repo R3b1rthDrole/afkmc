@@ -87,3 +87,5 @@ bot.on('kicked', (reason, loggedIn) => {
     bot = mineflayer.createBot(options);
 });
 bot.on('error', err => console.log(err))
+
+client.login(process.env.TOKEN)
