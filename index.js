@@ -33,14 +33,8 @@ bot.on('message', async(message) => {
     if (!msg) return;
     console.log(msg)
     if (channeler) {
-        if (msg === "[»] Tu as été déconnecté du serveur, vous avez donc été automatiquement redirigé vers le serveur principal! La raison de la déconnexion est '» Redémarrage du serveur.'!") {
-            channeler.send(msg).catch((err) => console.log(err))
-            setTimeout(() => {
-                login()
-            }, 60 * 1000)
-        } else {
-            channeler.send(msg).catch((err) => console.log(err))
-        }
+        if (msg.includes("LARGAGE")) return;
+        channeler.send(msg).catch((err) => console.log(err))  
     }
 })
 
