@@ -6,8 +6,8 @@ const client = new Discord.Client()
 const mineflayer = require("mineflayer");
 const bot = mineflayer.createBot({
     host: 'mc.pvp-warcraft.net',
-    username: '4FK',
-    //username: 'R3b1rth',
+    //username: '4FK',
+    username: 'R3b1rth',
 })
 
 //salons discord
