@@ -4,18 +4,21 @@ const client = new Discord.Client()
 
 //load bot
 const mineflayer = require("mineflayer");
-const bot = mineflayer.createBot({
+
+var options = {
     host: 'mc.pvp-warcraft.net',
     //username: '4FK',
     username: 'R3b1rth',
-})
+}
+
+const bot = mineflayer.createBot(options)
 
 //salons discord
 let channeler;
 client.on('ready', async() => {
     channeler = await client.channels.cache.get("835254128334077952")
     console.log(`The discord bot logged in! Username: ${client.user.username}!`)
-    if(channeler) console.log("channel trouvé")
+    if (channeler) console.log("channel trouvé")
 })
 
 //Discord -> Minecraft
@@ -35,24 +38,41 @@ bot.on('message', async(message) => {
     if (channeler) {
         if (msg.includes("LARGAGE")) return;
         if (msg.includes("ENTITEES")) return;
-        channeler.send(msg).catch((err) => console.log(err))  
+        if (!okay) return;
+        channeler.send(msg).catch((err) => console.log(err))
     }
 })
 
+let okay = false;
 //Connection
+bot.on('spawn', () => {
+    console.log('redémarrage, reconnection.. dans 5m..');
+    setTimeout(function() {
+        login();
+    }, 5 * 60 * 1000);
+})
+
 bot.once('spawn', () => {
     console.log('Je rejoins..')
     bot.chat(`/login eziosala`)
     console.log('connection..')
-    setTimeout(function(){
-      login()
+    setTimeout(function() {
+        login();
+        okay = true;
     }, 2500)
 })
 
+/*bot.on('respawn', () => {
+    console.log('redémarrage, reconnection..')
+    setTimeout(function() {
+        login()
+    }, 5 * 60 * 1000)
+})*/
+
 //Boussole + inventaire
 function login() {
-  bot.chat("/skycheat")
-  console.log("connecté, début de l'afk")
+    bot.chat("/skycheat")
+    console.log("connecté, début de l'afk")
 }
 
 bot.on('windowOpen', (window) => {
@@ -62,8 +82,8 @@ bot.on('windowOpen', (window) => {
 })
 
 //Catch
-bot.on('kicked', (reason, loggedIn) => console.log(reason, loggedIn));
+bot.on('kicked', (reason, loggedIn) => {
+    console.log(reason, loggedIn)
+    bot = mineflayer.createBot(options);
+});
 bot.on('error', err => console.log(err))
-
-//Connection discord
-client.login(process.env.TOKEN)
