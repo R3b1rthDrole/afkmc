@@ -7,8 +7,8 @@ const mineflayer = require("mineflayer");
 
 var options = {
     host: 'mc.pvp-warcraft.net',
-    //username: '4FK',
-    username: 'R3b1rth',
+    username: '4FK',
+    //username: 'R3b1rth',
 }
 
 const bot = mineflayer.createBot(options)
