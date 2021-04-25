@@ -34,6 +34,7 @@ bot.on('message', async(message) => {
     console.log(msg)
     if (channeler) {
         if (msg.includes("LARGAGE")) return;
+        if (msg.includes("ENTITEES")) return;
         channeler.send(msg).catch((err) => console.log(err))  
     }
 })
