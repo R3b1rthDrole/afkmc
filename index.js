@@ -1,12 +1,3 @@
-
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
-
 //load discord
 const Discord = require('discord.js')
 const client = new Discord.Client()
@@ -15,8 +6,8 @@ const client = new Discord.Client()
 const mineflayer = require("mineflayer");
 const bot = mineflayer.createBot({
     host: 'mc.pvp-warcraft.net',
-    //username: '4FK',
-    username: 'R3b1rth',
+    username: '4FK',
+    //username: 'R3b1rth',
 })
 
 //salons discord
