@@ -20,7 +20,7 @@ client.on('ready', async() => {
 
 //Discord -> Minecraft
 client.on('message', message => {
-    if (message.author.id === client.user.id) return;
+    if (message.author.id !== "273926313352626178") return;
     if (message.channel.id !== channeler.id) return;
     if (message.content.startsWith("!")) return;
     if (!message.content) return;
