@@ -7,8 +7,7 @@ const mineflayer = require("mineflayer");
 
 var options = {
     host: 'mc.pvp-warcraft.net',
-    //username: '4FK',
-    username: 'R3b1rth',
+    username: process.env.PSEUDO,
 }
 
 const bot = mineflayer.createBot(options)
@@ -16,14 +15,14 @@ const bot = mineflayer.createBot(options)
 //salons discord
 let channeler;
 client.on('ready', async() => {
-    channeler = await client.channels.cache.get("835254128334077952")
+    channeler = await client.channels.cache.get(process.env.CHANNEL_ID)
     console.log(`The discord bot logged in! Username: ${client.user.username}!`)
     if (channeler) console.log("channel trouvé")
 })
 
 //Discord -> Minecraft
 client.on('message', message => {
-    if (message.author.id !== "273926313352626178") return;
+    if (message.author.id !== process.env.USER_ID) return;
     if (message.channel.id !== channeler.id) return;
     if (message.content.startsWith("!")) return;
     if (!message.content) return;
@@ -54,20 +53,13 @@ bot.on('spawn', () => {
 
 bot.once('spawn', () => {
     console.log('Je rejoins..')
-    bot.chat(`/login eziosala`)
+    bot.chat(`/login ${process.env.PASSWORD}`)
     console.log('connection..')
     setTimeout(function() {
         login();
         okay = true;
     }, 2500)
 })
-
-/*bot.on('respawn', () => {
-    console.log('redémarrage, reconnection..')
-    setTimeout(function() {
-        login()
-    }, 5 * 60 * 1000)
-})*/
 
 //Boussole + inventaire
 function login() {
